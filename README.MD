@@ -155,8 +155,6 @@ You should now be able to serve up your Next.js application using `npm run dev` 
 
 Install the following additional node packages and create the jest `__tests__` directory:
 
-In a new directory where the project will be housed:
-
 ```sh
 npm install --save jest babel-jest enzyme enzyme-adapter-react-16 enzyme-to-json react-addons-test-utils react-test-renderer
 npm install --save @types/jest @types/enzyme @types/enzyme-adapter-react-16 @types/react-test-renderer
@@ -196,7 +194,7 @@ Then add additional run commands to `package.json`:
 
 ## Initial Jest Test of Index Page
 
-Create a series of tests for the `index.tsx` page
+Create a series of tests for the `index.tsx` page in `index.test.tsx` in the `__tests__` directory:
 
 ```tsx
 import { shallow } from "enzyme";
