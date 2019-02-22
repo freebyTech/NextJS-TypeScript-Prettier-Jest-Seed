@@ -4,14 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --silent",
+    "test:update": "jest --silent -u",
+    "test:watch": "jest --silent --watch",
+    "test:coverage": "jest --silent --coverage",
+    "lint": "tslint --project .",
     "dev": "next",
     "build": "next build",
     "start": "next start"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "James Eby <james@freebyTech.com>",
+  "license": "MIT",
   "dependencies": {
     "@types/jest": "^24.0.6",
     "@types/node": "^11.9.4",
@@ -24,6 +28,9 @@
     "typescript": "^3.3.3333"
   },
   "devDependencies": {
-    "prettier": "^1.16.4"
+    "prettier": "^1.16.4",
+    "tslint": "^5.12.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^3.6.0"
   }
 }

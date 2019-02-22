@@ -9,16 +9,19 @@ npm i -g typescript
 
 # Initial Setup
 
+In a new directory where the project will be housed:
+
 ```sh
 npm init -y
 npm install --save react react-dom next
 npm install -D prettier
+npm install -D tslint tslint-react tslint-config-prettier
 npm install --save typescript @types/node @types/react @types/react-dom @types/jest
 npm install --save @zeit/next-typescript
 mkdir pages
 ```
 
-Then add the following to package.json:
+Then add the following to `package.json`:
 
 ```json
 "scripts": {
@@ -28,7 +31,7 @@ Then add the following to package.json:
 }
 ```
 
-Create a `.prettierrc` file in your project
+Create a `.prettierrc` file in your project:
 
 ```js
 {
@@ -38,7 +41,20 @@ Create a `.prettierrc` file in your project
 }
 ```
 
-## Usage
+Create a `tslint.json` file in your project:
+
+```json
+{
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "rules": {
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "interface-name": false,
+    "member-ordering": false,
+    "no-console": false
+  }
+}
+```
 
 Create a `next.config.js` in your project
 
@@ -95,7 +111,7 @@ module.exports = withTypescript({
 });
 ```
 
-### Type checking
+### Optional Type checking
 
 If your IDE or code editor don't provide satisfying TypeScript support, or you want to see error list in console output, you can use [`fork-ts-checker-webpack-plugin`](https://github.com/Realytics/fork-ts-checker-webpack-plugin). It will not increase compile time because it forks type checking in a separate process
 
