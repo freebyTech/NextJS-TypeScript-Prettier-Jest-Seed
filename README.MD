@@ -74,29 +74,7 @@ Create a `.babelrc` file in your project
 }
 ```
 
-Create a `tsconfig.json` file in your project, either with `tsc --init` or manually, but make sure these options are set below:
-
-```json
-{
-  "compilerOptions": {
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "jsx": "preserve",
-    "lib": ["dom", "es2017"],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noEmit": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "preserveConstEnums": true,
-    "removeComments": false,
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strict": true,
-    "target": "esnext"
-  }
-}
-```
+Create a `tsconfig.json` file in your project, either with `tsc --init` or manually, but make sure its options are set like the file defined in this repository.
 
 Add your custom Next.js configuration:
 
