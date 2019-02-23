@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`With Snapshot Testing App shows "Hello Next.js" 1`] = `
+exports[`With Snapshot Testing App shows "About Next.js" 1`] = `
 <div
   style={
     Object {
@@ -35,7 +35,7 @@ exports[`With Snapshot Testing App shows "Hello Next.js" 1`] = `
     </a>
   </div>
   <p>
-    Hello Next.js
+    About Next.js
   </p>
 </div>
 `;

@@ -1,12 +1,12 @@
 import React from "react";
 import { Layout } from "../shared/Layout";
 
-const Index: React.FunctionComponent = () => {
+const About: React.FunctionComponent = () => {
   return (
     <Layout>
-      <p>Hello Next.js</p>
+      <p>About Next.js</p>
     </Layout>
   );
 };
 
-export default Index;
+export default About;
