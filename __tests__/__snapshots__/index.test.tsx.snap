@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`With Snapshot Testing App shows "Hello Next.js" 1`] = `
+exports[`With Snapshot Testing App shows "My Blog" 1`] = `
 <div
   style={
     Object {
@@ -34,8 +34,34 @@ exports[`With Snapshot Testing App shows "Hello Next.js" 1`] = `
       About
     </a>
   </div>
-  <p>
-    Hello Next.js
-  </p>
+  <h1>
+    My Blog
+  </h1>
+  <ul>
+    <li>
+      <a
+        href="/post?title=Hello Next.js"
+        onClick={[Function]}
+      >
+        Hello Next.js
+      </a>
+    </li>
+    <li>
+      <a
+        href="/post?title=Learn Next.js is awesome"
+        onClick={[Function]}
+      >
+        Learn Next.js is awesome
+      </a>
+    </li>
+    <li>
+      <a
+        href="/post?title=Deploy apps with Zeit"
+        onClick={[Function]}
+      >
+        Deploy apps with Zeit
+      </a>
+    </li>
+  </ul>
 </div>
 `;

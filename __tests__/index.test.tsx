@@ -5,15 +5,15 @@ import renderer from "react-test-renderer";
 import App from "../pages/index";
 
 describe("With Enzyme", () => {
-  it('App shows "Hello Next.js"', () => {
+  it('App shows "My Blog"', () => {
     const app = shallow(<App />);
 
-    expect(app.find("p").text()).toEqual("Hello Next.js");
+    expect(app.find("h1").text()).toEqual("My Blog");
   });
 });
 
 describe("With Snapshot Testing", () => {
-  it('App shows "Hello Next.js"', () => {
+  it('App shows "My Blog"', () => {
     const component = renderer.create(<App />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
