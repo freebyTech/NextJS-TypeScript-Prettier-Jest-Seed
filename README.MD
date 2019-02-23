@@ -16,7 +16,7 @@ npm init -y
 npm install --save react react-dom next
 npm install -D prettier
 npm install --save typescript @types/node @types/react @types/react-dom @types/next
-npm install -D tslint tslint-react tslint-config-prettier
+npm install -D tslint tslint-react tslint-config-prettier @babel/plugin-proposal-decorators
 npm install --save @zeit/next-typescript
 mkdir pages
 ```
@@ -69,10 +69,8 @@ Create a `.babelrc` file in your project
 
 ```js
 {
-  "presets": [
-    "next/babel",
-    "@zeit/next-typescript/babel"
-  ]
+  "presets": ["next/babel", "@zeit/next-typescript/babel"],
+  "plugins": [["@babel/plugin-proposal-decorators", { "legacy": true }]]
 }
 ```
 
