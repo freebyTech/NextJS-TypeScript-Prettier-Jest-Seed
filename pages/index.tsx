@@ -9,7 +9,7 @@ interface Props {
 
 const PostLink: React.FunctionComponent<Props> = (props) => (
   <li>
-    <Link href={`/post?title=${props.title}`}>
+    <Link as={`/post/${props.id}`} href={`/post?title=${props.title}`}>
       <a>{props.title}</a>
     </Link>
   </li>
@@ -17,7 +17,7 @@ const PostLink: React.FunctionComponent<Props> = (props) => (
 
 const PostFuncCompLink: React.FunctionComponent<Props> = (props) => (
   <li>
-    <Link href={`/postfunc?title=${props.title}`}>
+    <Link as={`/post/${props.id}`} href={`/postfunc?title=${props.title}`}>
       <a>{props.title}</a>
     </Link>
   </li>
