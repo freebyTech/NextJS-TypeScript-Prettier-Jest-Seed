@@ -9,9 +9,9 @@
     "test:watch": "jest --silent --watch",
     "test:coverage": "jest --silent --coverage",
     "lint": "tslint --project .",
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.js"
   },
   "keywords": [],
   "author": "James Eby <james@freebyTech.com>",
@@ -31,6 +31,8 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.9.1",
     "enzyme-to-json": "^3.3.5",
+    "express": "^4.16.4",
+    "isomorphic-unfetch": "^3.0.0",
     "jest": "^24.1.0",
     "next": "^8.0.1",
     "react": "^16.8.3",

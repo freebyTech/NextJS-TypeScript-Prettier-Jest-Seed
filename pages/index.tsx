@@ -1,39 +1,41 @@
-import React from "react";
 import { Layout } from "../shared/Layout";
+import { NextFunctionComponent, NextContext } from "next";
 import Link from "next/link";
+import fetch from "isomorphic-unfetch";
 
-interface Props {
+interface IShowInfo {
   id: string;
-  title: string;
+  name: string;
 }
 
-const PostLink: React.FunctionComponent<Props> = (props) => (
-  <li>
-    <Link as={`/post/${props.id}`} href={`/post?title=${props.title}`}>
-      <a>{props.title}</a>
-    </Link>
-  </li>
+interface IShowListProps {
+  shows: IShowInfo[];
+}
+
+const Index: NextFunctionComponent<IShowListProps> = ({ shows }) => (
+  <Layout>
+    <h1>Batman TV Shows</h1>
+    <ul>
+      {shows.map(({ show }) => (
+        <li key={show.id}>
+          <Link as={`/post/${show.id}`} href={`/post?id=${show.id}`}>
+            <a>{show.name}</a>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </Layout>
 );
 
-const PostFuncCompLink: React.FunctionComponent<Props> = (props) => (
-  <li>
-    <Link as={`/post/${props.id}`} href={`/postfunc?title=${props.title}`}>
-      <a>{props.title}</a>
-    </Link>
-  </li>
-);
+Index.getInitialProps = async ({ pathname }: NextContext) => {
+  const res = await fetch("https://api.tvmaze.com/search/shows?q=batman");
+  const data = await res.json();
 
-const Index: React.FunctionComponent = () => {
-  return (
-    <Layout>
-      <h1>My Blog</h1>
-      <ul>
-        <PostLink id="hello-jextjs" title="Hello Next.js" />
-        <PostLink id="learn-nextjs" title="Learn Next.js is awesome" />
-        <PostFuncCompLink id="deploy-nextjs" title="Deploy apps with Zeit" />
-      </ul>
-    </Layout>
-  );
+  console.log(`Show data fetched. Count: ${data.length}`);
+
+  return {
+    shows: data,
+  };
 };
 
 export default Index;
