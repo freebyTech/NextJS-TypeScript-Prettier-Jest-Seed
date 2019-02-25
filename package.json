@@ -11,7 +11,7 @@
     "lint": "tslint --project .",
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p $PORT"
   },
   "keywords": [],
   "author": "James Eby <james@freebyTech.com>",
