@@ -4,12 +4,26 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
-    // {
-    //   "type": "node",
-    //   "request": "attach",
-    //   "name": "Next: Attach Node",
-    //   "port": 9229
-    // },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Next: Launch",
+      "runtimeExecutable": "npm",
+      "cwd": "${workspaceFolder}",
+      "runtimeArgs": ["--inspect", "run", "dev"],
+      "port": 9229,
+      "console": "integratedTerminal",
+      "timeout": 100000
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Next: Attach",
+      "port": 9229,
+      "stopOnEntry": false,
+      "restart": true,
+      "timeout": 100000
+    },
     {
       "type": "chrome",
       "request": "launch",
@@ -17,11 +31,11 @@
       "url": "http://localhost:3000",
       "webRoot": "${workspaceRoot}"
     }
-  ] //,
-  //   "compounds": [
-  //     {
-  //       "name": "Next: Full",
-  //       "configurations": ["Next: Attach Node", "Next: Chrome"]
-  //     }
-  //  ]
+  ],
+  "compounds": [
+    {
+      "name": "Next: Full",
+      "configurations": ["Next: Launch", "Next: Attach", "Next: Chrome"]
+    }
+  ]
 }

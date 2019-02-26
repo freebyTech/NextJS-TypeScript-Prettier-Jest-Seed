@@ -1,15 +1,15 @@
 import React from "react";
-import { Layout } from "../shared/Layout";
+import { Dashboard } from "../shared/Layout";
 import Link from "next/link";
 
-interface IPost {
-  id: string;
+interface ITechniquePage {
+  page: string;
   title: string;
 }
 
-const PostLink: React.FunctionComponent<IPost> = (props) => (
+const PageLink: React.FunctionComponent<ITechniquePage> = (props) => (
   <li>
-    <Link as={`/post/${props.id}`} href={`/post?title=${props.title}`}>
+    <Link href={`/${props.page}?title=${props.title}`}>
       <a>{props.title}</a>
     </Link>
     <style jsx>{`
@@ -31,21 +31,17 @@ const PostLink: React.FunctionComponent<IPost> = (props) => (
   </li>
 );
 
-function getPosts(): IPost[] {
-  return [
-    { id: "hello-nextjs", title: "Hello Next.js" },
-    { id: "learn-nextjs", title: "Learn Next.js is awesome" },
-    { id: "deploy-nextjs", title: "Deploy apps with ZEIT" },
-  ];
+function getTechniques(): ITechniquePage[] {
+  return [{ page: "simple-state", title: "Simple State Management (props and state only)" }];
 }
 
 const Index: React.FunctionComponent = () => {
   return (
-    <Layout>
-      <h1>My Blog</h1>
+    <React.Fragment>
+      <h1>State Management Techniques</h1>
       <ul>
-        {getPosts().map((post) => (
-          <PostLink key={post.id} id={post.id} title={post.title} />
+        {getTechniques().map((technique) => (
+          <PageLink key={technique.page} page={technique.page} title={technique.title} />
         ))}
       </ul>
       <style jsx>{`
@@ -62,7 +58,7 @@ const Index: React.FunctionComponent = () => {
           margin: 5px 0;
         }
       `}</style>
-    </Layout>
+    </React.Fragment>
   );
 };
 

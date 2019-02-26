@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter, SingletonRouter } from "next/router";
-import { Layout } from "../shared/Layout";
+import { Dashboard } from "../shared/Layout";
 
 interface Props extends Partial<SingletonRouter> {
   // your props interface
@@ -8,10 +8,10 @@ interface Props extends Partial<SingletonRouter> {
 
 const PostFunctionCompLink: React.FunctionComponent<Props> = (props: Props) => {
   return (
-    <Layout>
+    <Dashboard>
       <h1>{props.router && props.router.query ? props.router.query.title : null}</h1>
       <p>This is the blog post content.</p>
-    </Layout>
+    </Dashboard>
   );
 };
 

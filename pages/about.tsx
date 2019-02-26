@@ -1,11 +1,11 @@
 import React from "react";
-import { Layout } from "../shared/Layout";
+import { Dashboard } from "../shared/Layout";
 
 const About: React.FunctionComponent = () => {
   return (
-    <Layout>
+    <Dashboard>
       <p>About Next.js</p>
-    </Layout>
+    </Dashboard>
   );
 };
 
