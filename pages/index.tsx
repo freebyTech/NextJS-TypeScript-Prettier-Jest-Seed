@@ -1,65 +1,81 @@
 import React from "react";
-import { Dashboard } from "../shared/Layout";
+import PropTypes from "prop-types";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogActions from "@material-ui/core/DialogActions";
+import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles";
 import Link from "next/link";
 
-interface ITechniquePage {
-  page: string;
-  title: string;
+import { Dashboard } from "../shared/Layout";
+
+const styles = (theme) => ({
+  root: {
+    textAlign: "center",
+    paddingTop: theme.spacing.unit * 20,
+  },
+});
+
+class Index extends React.Component {
+  state = {
+    open: false,
+  };
+
+  handleClose = () => {
+    this.setState({
+      open: false,
+    });
+  };
+
+  handleClick = () => {
+    this.setState({
+      open: true,
+    });
+  };
+
+  render() {
+    const { classes } = this.props;
+    const { open } = this.state;
+
+    return (
+      <Dashboard>
+        <div className={classes.root}>
+          <Dialog open={open} onClose={this.handleClose}>
+            <DialogTitle>Super Secret Password</DialogTitle>
+            <DialogContent>
+              <DialogContentText>1-2-3-4-5</DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button color="primary" onClick={this.handleClose}>
+                OK
+              </Button>
+            </DialogActions>
+          </Dialog>
+          <Typography variant="h4" gutterBottom>
+            Material-UI
+          </Typography>
+          <Typography variant="subtitle1" gutterBottom>
+            example project
+          </Typography>
+          <Typography gutterBottom>
+            <Link href="/about">
+              <a>Go to the about page</a>
+            </Link>
+          </Typography>
+          <Button variant="contained" color="secondary" onClick={this.handleClick}>
+            Super Secret Password
+          </Button>
+        </div>
+      </Dashboard>
+    );
+  }
 }
 
-const PageLink: React.FunctionComponent<ITechniquePage> = (props) => (
-  <li>
-    <Link href={`/${props.page}?title=${props.title}`}>
-      <a>{props.title}</a>
-    </Link>
-    <style jsx>{`
-      li {
-        list-style: none;
-        margin: 5px 0;
-      }
-
-      a {
-        text-decoration: none;
-        color: blue;
-        font-family: "Arial";
-      }
-
-      a:hover {
-        opacity: 0.6;
-      }
-    `}</style>
-  </li>
-);
-
-function getTechniques(): ITechniquePage[] {
-  return [{ page: "simple-state", title: "Simple State Management (props and state only)" }];
-}
-
-const Index: React.FunctionComponent = () => {
-  return (
-    <React.Fragment>
-      <h1>State Management Techniques</h1>
-      <ul>
-        {getTechniques().map((technique) => (
-          <PageLink key={technique.page} page={technique.page} title={technique.title} />
-        ))}
-      </ul>
-      <style jsx>{`
-        h1 {
-          font-family: "Arial";
-        }
-
-        ul {
-          padding: 0;
-        }
-
-        li {
-          list-style: none;
-          margin: 5px 0;
-        }
-      `}</style>
-    </React.Fragment>
-  );
+Index.propTypes = {
+  classes: PropTypes.object.isRequired,
 };
 
-export default Index;
+export default withStyles(styles)(Index);

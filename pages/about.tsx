@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Dashboard } from "../shared/Layout";
 
 const About: React.FunctionComponent = () => {

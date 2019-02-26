@@ -1,19 +1,24 @@
 // next.config.js
 const withTypescript = require("@zeit/next-typescript");
-const nextEnv = require("next-env");
-const dotenvLoad = require("dotenv-load");
+require("dotenv").config();
 const withCSS = require("@zeit/next-css");
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+//const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+const path = require("path");
+const Dotenv = require("dotenv-webpack");
 
-dotenvLoad();
-
-const withNextEnv = nextEnv();
-
-module.exports = {
-  ...withTypescript(),
-  ...withNextEnv({}),
-  ...withCSS({
+module.exports = withTypescript(
+  withCSS({
     webpack(config) {
+      config.plugins = config.plugins || [];
+      config.plugins = [
+        ...config.plugins,
+
+        // Read the .env file
+        new Dotenv({
+          path: path.join(__dirname, ".env"),
+          systemvars: true,
+        }),
+      ];
       //   if (process.env.ANALYZE) {
       //     config.plugins.push(
       //       new BundleAnalyzerPlugin({
@@ -26,5 +31,5 @@ module.exports = {
       return config;
     },
     cssModules: true,
-  }),
-};
+  })
+);
